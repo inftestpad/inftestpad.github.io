@@ -15,7 +15,7 @@ function getStringFromDateUtc(dt, format) {
 }
 
 function setSpanDate(id) {
-    var dt = new Date($(id).attr('utcdate'));
+    var dt = new Date();
     var format = $(id).attr('formatdate');
     var str = getStringFromDateUtc(dt, format);
     $(id).html(str);
