@@ -1,15 +1,4 @@
 function closeWindow() { window.close(); }
-
-function setSpanDate(id) {
-    var dt = new Date($(id).attr('utcdate'));
-    var format = $(id).attr('formatdate');
-    var str = getStringFromDateUtc(dt, format);
-    $(id).html(str);
-}
-function getStringFromDateUtc(dt, format) {
-    dt.setMinutes(dt.getMinutes() - new Date().getTimezoneOffset());
-    return getStringDate(dt, format);
-}
 function getStringDate(dt, format) {
     var str = format;
     str = str.replace('dd', dt.getDate().toString().padLeft(2, '0'));
@@ -20,3 +9,15 @@ function getStringDate(dt, format) {
     str = str.replace('ss', dt.getSeconds().toString().padLeft(2, '0'));
     return str;
 }
+function getStringFromDateUtc(dt, format) {
+    dt.setMinutes(dt.getMinutes() - new Date().getTimezoneOffset());
+    return getStringDate(dt, format);
+}
+
+function setSpanDate(id) {
+    var dt = new Date($(id).attr('utcdate'));
+    var format = $(id).attr('formatdate');
+    var str = getStringFromDateUtc(dt, format);
+    $(id).html(str);
+}
+
